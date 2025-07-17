@@ -20,5 +20,5 @@ jobs:
       - name: Build QA Docker image
         run: |
             docker build -f Dockerfile \
-              --build-arg APP_NAME=my-awesome-service \
-              -t my-image:qa .
+            --build-arg APP_NAME=${{ github.event.inputs.app_name }} \
+            -t my-image:qa .
