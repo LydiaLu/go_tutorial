@@ -1,0 +1,24 @@
+name: docker-build-qa
+
+on:
+  workflow_dispatch:   # 手工触发，带输入框
+    inputs:
+      branch:
+        description: '要构建的分支（默认 dev）'
+        required: true
+        default: 'dev'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.branch }}
+
+      - name: Build QA Docker image
+        run: |
+          docker build \
+            -f ./Dockerfile \
+            -t my-app:qa-${{ github.sha }} .
