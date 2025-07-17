@@ -29,8 +29,5 @@ RUN apt-get update && \
 
 WORKDIR /app
 
-# 把构建产物复制进来（假设二进制名为 main）
-COPY --from=builder /src/main /app/main
-
 # 入口：打印 APP_NAME
 CMD ["sh", "-c", "echo \"Container started for ${APP_NAME}\""]
