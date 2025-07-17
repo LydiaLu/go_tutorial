@@ -1,7 +1,7 @@
 name: docker-build-qa
 
 on:
-  workflow_dispatch:   # 手工触发，带输入框
+  workflow_dispatch:   # 手动触发，带输入框
     inputs:
       branch:
         description: '要构建的分支（默认 dev）'
@@ -19,6 +19,6 @@ jobs:
 
       - name: Build QA Docker image
         run: |
-            docker build -f Dockerfile \
-            --build-arg APP_NAME="LydiaLu" \
-            -t my-image:qa .
+          docker build -f Dockerfile \
+          --build-arg APP_NAME="LydiaLu" \
+          -t my-image:qa .
